@@ -4,7 +4,20 @@ on:
     types: 
       - opened
       - closed
+    branches:
+      - main
+      - 'dev-*' # dev-new
+      - 'feat/**' # feat/new feat/new/button
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+      - 'dev-*' # dev-new
+      - 'feat/**' # feat/new feat/new/button
+    paths-ignore:
+      - '..github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
